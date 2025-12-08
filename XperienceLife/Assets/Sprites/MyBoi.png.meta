@@ -1,0 +1,1840 @@
+fileFormatVersion: 2
+guid: 57b49c03de4ac2b4586335ac2c5ebfa0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4703570266007107181
+    second: MyBoi_0
+  - first:
+      213: 3653566050629215438
+    second: MyBoi_1
+  - first:
+      213: -5828398233837168563
+    second: MyBoi_2
+  - first:
+      213: 2119993240741750159
+    second: MyBoi_3
+  - first:
+      213: 3608213598687673861
+    second: MyBoi_4
+  - first:
+      213: 827850655209977316
+    second: MyBoi_5
+  - first:
+      213: -9126703592117055695
+    second: MyBoi_6
+  - first:
+      213: 3716260124000576500
+    second: MyBoi_7
+  - first:
+      213: -557926580919274618
+    second: MyBoi_8
+  - first:
+      213: 6780885841865962415
+    second: MyBoi_9
+  - first:
+      213: 8282398287508171279
+    second: MyBoi_10
+  - first:
+      213: -3936431002091202982
+    second: MyBoi_11
+  - first:
+      213: 8700579924398989932
+    second: MyBoi_12
+  - first:
+      213: 1546888971361158989
+    second: MyBoi_13
+  - first:
+      213: -1082692422941810576
+    second: MyBoi_14
+  - first:
+      213: 128690413162670203
+    second: MyBoi_15
+  - first:
+      213: 2317307711604608534
+    second: MyBoi_16
+  - first:
+      213: -3788871935326093625
+    second: MyBoi_17
+  - first:
+      213: 1417573759686756619
+    second: MyBoi_18
+  - first:
+      213: 1377389762421458901
+    second: MyBoi_19
+  - first:
+      213: 8586401690921145380
+    second: MyBoi_20
+  - first:
+      213: -8404401503764897835
+    second: MyBoi_21
+  - first:
+      213: 638134028285015233
+    second: MyBoi_22
+  - first:
+      213: -3335797061680642875
+    second: MyBoi_23
+  - first:
+      213: 4968089191636148585
+    second: MyBoi_24
+  - first:
+      213: 4430858236270981691
+    second: MyBoi_25
+  - first:
+      213: -3514518589319992850
+    second: MyBoi_26
+  - first:
+      213: 2890153601252613414
+    second: MyBoi_27
+  - first:
+      213: 3916321067979089075
+    second: MyBoi_28
+  - first:
+      213: -5124781090533712889
+    second: MyBoi_29
+  - first:
+      213: 3431594885781677970
+    second: MyBoi_30
+  - first:
+      213: 7581592694123139857
+    second: MyBoi_31
+  - first:
+      213: 1838419637289532790
+    second: MyBoi_32
+  - first:
+      213: 7834476213741005245
+    second: MyBoi_33
+  - first:
+      213: -4559388688159526678
+    second: MyBoi_34
+  - first:
+      213: -6371787283547547258
+    second: MyBoi_35
+  - first:
+      213: 6420546364230707540
+    second: MyBoi_36
+  - first:
+      213: -6136652477408752998
+    second: MyBoi_37
+  - first:
+      213: -5659013569554460685
+    second: MyBoi_38
+  - first:
+      213: -4479224922252518500
+    second: MyBoi_39
+  - first:
+      213: 5293076906716405146
+    second: MyBoi_40
+  - first:
+      213: -5150933037918548328
+    second: MyBoi_41
+  - first:
+      213: -2923056461393061452
+    second: MyBoi_42
+  - first:
+      213: -4761052479245992880
+    second: MyBoi_43
+  - first:
+      213: -4368307560210612718
+    second: MyBoi_44
+  - first:
+      213: 7316075898371064201
+    second: MyBoi_45
+  - first:
+      213: 6509367838260877642
+    second: MyBoi_46
+  - first:
+      213: 7441326402585049981
+    second: MyBoi_47
+  - first:
+      213: -6406469376014195422
+    second: MyBoi_48
+  - first:
+      213: 5616830488767048942
+    second: MyBoi_49
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: VisionOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MyBoi_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 226
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3998e8e73cf89beb0800000000000000
+      internalID: -4703570266007107181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_1
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 226
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec46e2337f214b230800000000000000
+      internalID: 3653566050629215438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_2
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 226
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d481f9ebfae5d1fa0800000000000000
+      internalID: -5828398233837168563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_3
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 226
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8524a8ce9abb6d10800000000000000
+      internalID: 2119993240741750159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_4
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 226
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50e338f9623f21230800000000000000
+      internalID: 3608213598687673861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_5
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 226
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e57dd6e8cd1d7b00800000000000000
+      internalID: 827850655209977316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_6
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 226
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13fc495307f675180800000000000000
+      internalID: -9126703592117055695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_7
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 226
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f3e008a4eec29330800000000000000
+      internalID: 3716260124000576500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_8
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 226
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 683fe8d0bb8d148f0800000000000000
+      internalID: -557926580919274618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_9
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 226
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa375ea1fbb8a1e50800000000000000
+      internalID: 6780885841865962415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_10
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 226
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0a6a374c5df0f270800000000000000
+      internalID: 8282398287508171279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_11
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 226
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a56d4851cdcfe59c0800000000000000
+      internalID: -3936431002091202982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_12
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 165
+        width: 22
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6262b5f75baeb870800000000000000
+      internalID: 8700579924398989932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_13
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 190
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4783fcd257a77510800000000000000
+      internalID: 1546888971361158989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_14
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 190
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 070eb894af089f0f0800000000000000
+      internalID: -1082692422941810576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_15
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 165
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b782f8abf3339c100800000000000000
+      internalID: 128690413162670203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_16
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 165
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61e4779061bb82020800000000000000
+      internalID: 2317307711604608534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_17
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 166
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cef0739c093b6bc0800000000000000
+      internalID: -3788871935326093625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_18
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 166
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b094b05e2db3ca310800000000000000
+      internalID: 1417573759686756619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_19
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 165
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d70462f0b87d1310800000000000000
+      internalID: 1377389762421458901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_20
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 165
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4241b2e58d6092770800000000000000
+      internalID: 8586401690921145380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_21
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 168
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5df955a5c519d5b80800000000000000
+      internalID: -8404401503764897835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_22
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 166
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c4740b848b1bd800800000000000000
+      internalID: 638134028285015233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_23
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 166
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c4cbb70f3ed4b1d0800000000000000
+      internalID: -3335797061680642875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_24
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 166
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9612ee73cc232f440800000000000000
+      internalID: 4968089191636148585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_25
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 190
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b32bb0717129d7d30800000000000000
+      internalID: 4430858236270981691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_26
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 166
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee92317b6fbe93fc0800000000000000
+      internalID: -3514518589319992850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_27
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 165
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62d5afc3363eb1820800000000000000
+      internalID: 2890153601252613414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_28
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 165
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b4a5430341995630800000000000000
+      internalID: 3916321067979089075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_29
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 190
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70c591b10ce11e8b0800000000000000
+      internalID: -5124781090533712889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_30
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 166
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29760140e597f9f20800000000000000
+      internalID: 3431594885781677970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_31
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 165
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11318e4e26a373960800000000000000
+      internalID: 7581592694123139857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_32
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 165
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67dbeb47be0638910800000000000000
+      internalID: 1838419637289532790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_33
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 191
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db9a7498b96a9bc60800000000000000
+      internalID: 7834476213741005245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_34
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 166
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae03151152cc9b0c0800000000000000
+      internalID: -4559388688159526678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_35
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 165
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6891ccb893dd297a0800000000000000
+      internalID: -6371787283547547258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_36
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 141
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 459a5e796ec5a1950800000000000000
+      internalID: 6420546364230707540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_37
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 83
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9ac70ec51b36daa0800000000000000
+      internalID: -6136652477408752998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_38
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 140
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ff479724252771b0800000000000000
+      internalID: -5659013569554460685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_39
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 140
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9bdf084aa896d1c0800000000000000
+      internalID: -4479224922252518500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_40
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 140
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9d97a91769c47940800000000000000
+      internalID: 5293076906716405146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_41
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 141
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89e8a0d51b53488b0800000000000000
+      internalID: -5150933037918548328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_42
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 141
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b99148a2a73f67d0800000000000000
+      internalID: -2923056461393061452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_43
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 142
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05cbc89cef75dedb0800000000000000
+      internalID: -4761052479245992880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_44
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 141
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21e3ef31b67a063c0800000000000000
+      internalID: -4368307560210612718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_45
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 142
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9814430744ce78560800000000000000
+      internalID: 7316075898371064201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_46
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 141
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4954ef8f8be55a50800000000000000
+      internalID: 6509367838260877642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_47
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 140
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7b31d3ffe6e44760800000000000000
+      internalID: 7441326402585049981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_48
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 141
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2256142ab06a717a0800000000000000
+      internalID: -6406469376014195422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_49
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 34
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eec2b8ef19df2fd40800000000000000
+      internalID: 5616830488767048942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_50
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 190
+        width: 18
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 094607ceb6032a54282cd50773707a84
+      internalID: 2044759918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_51
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 190
+        width: 19
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6ceb029ffbfdd54ebc2893183f828cc
+      internalID: -117096489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_52
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 190
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b29cbf1a761c17c4893237621a6c5ecc
+      internalID: 1260371281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_53
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 189
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 899f4fc418affc04cb16a2655491c0f0
+      internalID: 429881024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_54
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 169
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8502d34fe408a947918538aa9b98e99
+      internalID: 925347765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_55
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 166
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5a915abce3bad94bb62533d6be29a45
+      internalID: 363665748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_56
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 168
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3ae29d42bc415448a4655ea295cfb86
+      internalID: -1350034189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_57
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 167
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ed5a88eeaeb13d47a3f47b84f4969f1
+      internalID: -171029762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_58
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 190
+        width: 22
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f39345b25c9ab20499da6484d7064dc7
+      internalID: -714742842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_59
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 189
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0011bbdde74960e46bdfd5ccc7b1e00e
+      internalID: -1193043732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_60
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 189
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b698a89ea831264e8ea7bca5e530dea
+      internalID: -100788730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_61
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 114
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24dc10b6b4865964eb73dc531e859a1e
+      internalID: 1750516454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_62
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 112
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05b655eef6efb5641a67699e0c1e630b
+      internalID: 1637394410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_63
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 114
+        width: 4
+        height: 3
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5dcfb43c619d2040b13d492d28c519d
+      internalID: -1885049974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyBoi_64
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 0
+        width: 17
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d7babf93a6d5394aa98ce1f68c744f1
+      internalID: 389426128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 57f2a1edda97cea4e9dbb9416f5bd4a3
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      MyBoi_0: -4703570266007107181
+      MyBoi_1: 3653566050629215438
+      MyBoi_10: 8282398287508171279
+      MyBoi_11: -3936431002091202982
+      MyBoi_12: 8700579924398989932
+      MyBoi_13: 1546888971361158989
+      MyBoi_14: -1082692422941810576
+      MyBoi_15: 128690413162670203
+      MyBoi_16: 2317307711604608534
+      MyBoi_17: -3788871935326093625
+      MyBoi_18: 1417573759686756619
+      MyBoi_19: 1377389762421458901
+      MyBoi_2: -5828398233837168563
+      MyBoi_20: 8586401690921145380
+      MyBoi_21: -8404401503764897835
+      MyBoi_22: 638134028285015233
+      MyBoi_23: -3335797061680642875
+      MyBoi_24: 4968089191636148585
+      MyBoi_25: 4430858236270981691
+      MyBoi_26: -3514518589319992850
+      MyBoi_27: 2890153601252613414
+      MyBoi_28: 3916321067979089075
+      MyBoi_29: -5124781090533712889
+      MyBoi_3: 2119993240741750159
+      MyBoi_30: 3431594885781677970
+      MyBoi_31: 7581592694123139857
+      MyBoi_32: 1838419637289532790
+      MyBoi_33: 7834476213741005245
+      MyBoi_34: -4559388688159526678
+      MyBoi_35: -6371787283547547258
+      MyBoi_36: 6420546364230707540
+      MyBoi_37: -6136652477408752998
+      MyBoi_38: -5659013569554460685
+      MyBoi_39: -4479224922252518500
+      MyBoi_4: 3608213598687673861
+      MyBoi_40: 5293076906716405146
+      MyBoi_41: -5150933037918548328
+      MyBoi_42: -2923056461393061452
+      MyBoi_43: -4761052479245992880
+      MyBoi_44: -4368307560210612718
+      MyBoi_45: 7316075898371064201
+      MyBoi_46: 6509367838260877642
+      MyBoi_47: 7441326402585049981
+      MyBoi_48: -6406469376014195422
+      MyBoi_49: 5616830488767048942
+      MyBoi_5: 827850655209977316
+      MyBoi_50: 2044759918
+      MyBoi_51: -117096489
+      MyBoi_52: 1260371281
+      MyBoi_53: 429881024
+      MyBoi_54: 925347765
+      MyBoi_55: 363665748
+      MyBoi_56: -1350034189
+      MyBoi_57: -171029762
+      MyBoi_58: -714742842
+      MyBoi_59: -1193043732
+      MyBoi_6: -9126703592117055695
+      MyBoi_60: -100788730
+      MyBoi_61: 1750516454
+      MyBoi_62: 1637394410
+      MyBoi_63: -1885049974
+      MyBoi_64: 389426128
+      MyBoi_7: 3716260124000576500
+      MyBoi_8: -557926580919274618
+      MyBoi_9: 6780885841865962415
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
