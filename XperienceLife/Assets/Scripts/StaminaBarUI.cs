@@ -10,18 +10,22 @@ public class StaminaBarUI : MonoBehaviour
 
     private void Update()
     {
-        if (playerStats == null) return;
+        if (playerStats == null || fillImage == null || staminaText == null)
+            return;
+
+        float max = playerStats.maxStamina;
 
         float ratio = 0f;
-        if (playerStats.stamina > 0f)
+        if (max > 0f)
         {
-            ratio = playerStats.currentStamina / playerStats.stamina;
+            ratio = playerStats.currentStamina / max;
         }
 
-        fillImage.fillAmount = ratio;
+        fillImage.fillAmount = Mathf.Clamp01(ratio);
 
         int current = Mathf.RoundToInt(playerStats.currentStamina);
-        int max = Mathf.RoundToInt(playerStats.stamina);
-        staminaText.text = $"{current} / {max}";
+        int maxDisplay = Mathf.RoundToInt(max);
+
+        staminaText.text = $"{current} / {maxDisplay}";
     }
 }

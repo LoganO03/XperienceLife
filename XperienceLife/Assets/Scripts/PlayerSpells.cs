@@ -7,11 +7,14 @@ public class PlayerSpells : MonoBehaviour
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private GameObject fireballPrefab;
     [SerializeField] private PlayerAnimationController animController;
+    [SerializeField] private PlayerMeleeAttack meleeAttack;  // NEW
 
     [Header("Fireball Settings")]
-    [SerializeField] private float fireballCooldownBase = 1.5f;
     [SerializeField] private float fireballManaCost = 10f;
     [SerializeField] private float fireballSpawnOffset = 0.6f;
+
+    [Header("Cast Block Settings")]
+    [SerializeField] private float meleeBlockWindow = 0.15f; // how long to block melee after casting
 
     private bool canCastFire = true;
 
@@ -25,6 +28,9 @@ public class PlayerSpells : MonoBehaviour
 
         if (animController == null)
             animController = GetComponentInChildren<PlayerAnimationController>();
+
+        if (meleeAttack == null)
+            meleeAttack = GetComponent<PlayerMeleeAttack>();
     }
 
     public void CastSpell()
@@ -48,7 +54,12 @@ public class PlayerSpells : MonoBehaviour
         if (dir.sqrMagnitude < 0.001f)
             return;
 
-        // Play spell animation
+        // BLOCK MELEE for a brief window so Spell input can't spawn a hitbox
+        if (meleeAttack != null && meleeBlockWindow > 0f)
+        {
+            meleeAttack.BlockAttacksFor(meleeBlockWindow);
+        }
+
         if (animController != null)
         {
             Debug.Log("[Spell] PlaySpell()");
@@ -56,6 +67,7 @@ public class PlayerSpells : MonoBehaviour
         }
 
         playerStats.currentMana -= fireballManaCost;
+        playerStats.currentMana = Mathf.Clamp(playerStats.currentMana, 0f, playerStats.maxMana);
 
         Vector3 spawnPos = transform.position + (Vector3)(dir * fireballSpawnOffset);
         GameObject fbObj = Instantiate(fireballPrefab, spawnPos, Quaternion.identity);
@@ -63,11 +75,8 @@ public class PlayerSpells : MonoBehaviour
         var projectile = fbObj.GetComponent<FireballProjectile>();
         if (projectile != null)
         {
-            float bonusDamage = 0f;
-            if (playerStats != null)
-                bonusDamage += playerStats.magic / 5f;
-
-            projectile.Initialize(dir, bonusDamage);
+            float damage = Mathf.Max(1f, playerStats.magic / 5f);
+            projectile.Initialize(dir, damage);
         }
 
         float cd = GetFireballCooldown();
@@ -77,11 +86,9 @@ public class PlayerSpells : MonoBehaviour
     private float GetFireballCooldown()
     {
         if (playerStats == null)
-            return fireballCooldownBase;
+            return 5f;
 
-        float reduction = 0.03f * playerStats.intellect;
-        reduction = Mathf.Clamp(reduction, 0f, 0.7f);
-        return fireballCooldownBase * (1f - reduction);
+        return playerStats.GetSpellCooldown();
     }
 
     private System.Collections.IEnumerator FireballCooldownRoutine(float duration)

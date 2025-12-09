@@ -10,18 +10,20 @@ public class ManaBarUI : MonoBehaviour
 
     private void Update()
     {
-        if (playerStats == null) return;
+        if (playerStats == null || fillImage == null || manaText == null)
+            return;
+
+        float max = playerStats.maxMana;
 
         float ratio = 0f;
-        if (playerStats.magic > 0f)
+        if (max > 0f)
         {
-            ratio = playerStats.currentMana / playerStats.magic;
+            ratio = playerStats.currentMana / max;
         }
 
-        fillImage.fillAmount = ratio;
+        fillImage.fillAmount = Mathf.Clamp01(ratio);
 
         float current = Mathf.RoundToInt(playerStats.currentMana);
-        float max = playerStats.magic;
-        manaText.text = $"{current} / {max}";
+        manaText.text = $"{current} / {Mathf.RoundToInt(max)}";
     }
 }

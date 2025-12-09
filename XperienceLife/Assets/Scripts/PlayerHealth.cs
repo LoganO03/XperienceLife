@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float hitStopDuration = 0.05f;
     [SerializeField] private float hitStopTimeScale = 0.2f;
 
-    public float MaxHealth => stats != null ? stats.health : 5f;
+    public float MaxHealth => stats != null ? stats.maxHealth : 10f;
     public float CurrentHealth => stats != null ? stats.currentHealth : 0f;
 
     private SpriteRenderer sr;
@@ -26,7 +26,10 @@ public class PlayerHealth : MonoBehaviour
             stats = GetComponent<PlayerStats>();
 
         if (stats != null)
-            stats.currentHealth = stats.health;
+        {
+            // Ensure derived stats are up to date and current HP is filled
+            stats.RecalculateDerivedStats(true);
+        }
 
         sr = GetComponent<SpriteRenderer>();
         if (sr != null)
@@ -38,16 +41,17 @@ public class PlayerHealth : MonoBehaviour
         if (stats == null) return;
 
         stats.currentHealth -= amount;
-        stats.currentHealth = Mathf.Clamp(stats.currentHealth, 0, stats.health);
+        stats.currentHealth = Mathf.Clamp(stats.currentHealth, 0f, stats.maxHealth);
 
-        Debug.Log("Player took damage: " + amount + " (HP = " + stats.currentHealth + ")");
+        Debug.Log("Player took damage: " + amount + " (HP = " +
+                  stats.currentHealth + " / " + stats.maxHealth + ")");
 
         if (!isFlashing)
             StartCoroutine(DamageFlash());
 
         StartCoroutine(HitStopRoutine());
 
-        if (stats.currentHealth <= 0)
+        if (stats.currentHealth <= 0f)
         {
             Die();
         }

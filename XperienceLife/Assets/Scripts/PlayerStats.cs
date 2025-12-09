@@ -1,97 +1,99 @@
 using UnityEngine;
-using System.Collections;
 
 public class PlayerStats : MonoBehaviour
 {
-    [Header("Core Stats")]
-    public float health = 5f;            
-    public float stamina = 100f;         
-    public float magic = 50f;            
-    public float strength = 1f;          
-    public float intellect = 0f;         
-    public float regen = 0f;             // HP per second
-    public float manaRegen = 0f;         // mana per second
+    [Header("Level Stats (these are your stat points / levels)")]
+    [Tooltip("Health stat level. Effective HP = baseHealth + health.")]
+    public int health = 0;
 
-    [Header("Regen Delays")]
-    public float healthRegenDelay = 3f;
-    public float manaRegenDelay = 1f;
+    [Tooltip("Stamina stat level. Effective stamina = floor(100 + 0.25 * stamina).")]
+    public int stamina = 0;
 
-    [HideInInspector] public float currentHealth;
-    [HideInInspector] public float currentStamina;
-    [HideInInspector] public float currentMana;
+    [Tooltip("Magic stat level. Controls max mana (and optionally spell damage).")]
+    public int magic = 0;
 
-    private Coroutine healthRegenCoroutine;
-    private Coroutine manaRegenCoroutine;
+    [Tooltip("Strength stat level. Effective melee damage = baseDamage + strength.")]
+    public int strength = 0;
+
+    [Tooltip("Intellect stat level. Reduces spell cooldown: 5s - 0.1s * intellect.")]
+    public int intellect = 0;
+
+    [Header("Runtime Resources (read-only at runtime)")]
+    public float maxHealth;
+    public float currentHealth;
+
+    public float maxStamina;
+    public float currentStamina;
+
+    public float maxMana;
+    public float currentMana;
+
+    [Header("Config")]
+    [SerializeField] private float baseHealth = 10f;               // base HP
+    [SerializeField] private float baseStamina = 100f;             // base stamina
+    [SerializeField] private float staminaPerLevel = 0.25f;        // +0.25 per stamina level (floored)
+
+    [SerializeField] private float baseMana = 50f;                 // base mana
+    [SerializeField] private float manaPerMagicLevel = 5f;         // +5 per magic level
+
+    [SerializeField] private float baseDamage = 1f;                // base damage before strength
+    [SerializeField] private float spellBaseCooldown = 5f;         // 5 seconds base
+    [SerializeField] private float spellCooldownPerIntellect = 0.1f; // -0.1s per intellect level
+    [SerializeField] private float minSpellCooldown = 0.25f;       // safety clamp
 
     private void Awake()
     {
-        currentHealth = health;
-        currentStamina = stamina;
-        currentMana = magic;
+        // On start, build all the derived stats and fill current values.
+        RecalculateDerivedStats(resetCurrent: true);
     }
 
-    // -------- PUBLIC API -------- //
-
-    public void TakeDamage(float amount)
+    private void OnValidate()
     {
-        currentHealth -= amount;
-        currentHealth = Mathf.Clamp(currentHealth, 0f, health);
-
-        // restart regen delay
-        if (healthRegenCoroutine != null)
-            StopCoroutine(healthRegenCoroutine);
-
-        healthRegenCoroutine = StartCoroutine(HealthRegenRoutine());
+        // Keep values consistent in the editor too.
+        RecalculateDerivedStats(resetCurrent: false);
     }
 
-    public bool TrySpendMana(float amount)
+    /// <summary>
+    /// Recompute maxHealth, maxStamina, maxMana from levels. Optionally refill current.
+    /// </summary>
+    public void RecalculateDerivedStats(bool resetCurrent)
     {
-        if (currentMana < amount)
-            return false;
+        // Health: base 10 + 1 per health level
+        maxHealth = baseHealth + health;
 
-        currentMana -= amount;
-        currentMana = Mathf.Clamp(currentMana, 0f, magic);
+        if (resetCurrent || currentHealth > maxHealth)
+            currentHealth = maxHealth;
 
-        // restart mana regen delay
-        if (manaRegenCoroutine != null)
-            StopCoroutine(manaRegenCoroutine);
+        // Stamina: base 100 + 0.25 per stamina level, floored
+        float rawStamina = baseStamina + stamina * staminaPerLevel;
+        maxStamina = Mathf.Floor(rawStamina);
 
-        manaRegenCoroutine = StartCoroutine(ManaRegenRoutine());
+        if (resetCurrent || currentStamina > maxStamina)
+            currentStamina = maxStamina;
 
-        return true;
+        // Mana: base 50 + 5 per magic level
+        maxMana = baseMana + magic * manaPerMagicLevel;
+
+        if (resetCurrent || currentMana > maxMana)
+            currentMana = maxMana;
     }
 
-    // ---------- COROUTINES ---------- //
-
-    private IEnumerator HealthRegenRoutine()
+    /// <summary>
+    /// Melee damage: base 1 + 1 per strength level.
+    /// </summary>
+    public float GetMeleeDamage()
     {
-        // wait for delay
-        yield return new WaitForSeconds(healthRegenDelay);
-
-        // regen loop
-        while (currentHealth < health)
-        {
-            currentHealth += regen * Time.deltaTime;
-            currentHealth = Mathf.Clamp(currentHealth, 0f, health);
-            yield return null;
-        }
-
-        healthRegenCoroutine = null;
+        return baseDamage + strength;
     }
 
-    private IEnumerator ManaRegenRoutine()
+    /// <summary>
+    /// Spell cooldown: 5 seconds minus 0.1 seconds per intellect level (clamped).
+    /// </summary>
+    public float GetSpellCooldown()
     {
-        // wait for delay
-        yield return new WaitForSeconds(manaRegenDelay);
-
-        // regen loop
-        while (currentMana < magic)
-        {
-            currentMana += manaRegen * Time.deltaTime;
-            currentMana = Mathf.Clamp(currentMana, 0f, magic);
-            yield return null;
-        }
-
-        manaRegenCoroutine = null;
+        float cd = spellBaseCooldown - spellCooldownPerIntellect * intellect;
+        if (cd < minSpellCooldown)
+            cd = minSpellCooldown;
+        return cd;
     }
 }

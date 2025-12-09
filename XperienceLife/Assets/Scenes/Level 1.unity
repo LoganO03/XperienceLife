@@ -10824,14 +10824,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d87b288dedfb7cb4e9d9b03422ec5e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 2
+  walkSpeed: 5
   sprintMultiplier: 1.75
   staminaDrainPerSecond: 20
   staminaRegenPerSecond: 15
   minStaminaToSprint: 5
-  playerStats: {fileID: 511079458}
   aimIndicator: {fileID: 395895687}
   aimDistance: 0.8
+  playerStats: {fileID: 511079458}
 --- !u!50 &511079454
 Rigidbody2D:
   serializedVersion: 5
@@ -10932,8 +10932,6 @@ MonoBehaviour:
   flashDuration: 0.1
   hitStopDuration: 0.05
   hitStopTimeScale: 0.2
-  shakeDuration: 0.15
-  shakeMagnitude: 0.15
 --- !u!114 &511079458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10946,16 +10944,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff9b3e5a012f9dd47a32a362ffbb276f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  stamina: 100
-  magic: 100
+  health: 5
+  stamina: 5
+  magic: 2
   strength: 2
   intellect: 50
-  regen: 2
-  manaRegen: 10
-  currentHealth: 0
-  currentStamina: 0
-  currentMana: 0
+  maxHealth: 15
+  currentHealth: 10
+  maxStamina: 101
+  currentStamina: 50
+  maxMana: 60
+  currentMana: 50
+  baseHealth: 10
+  baseStamina: 100
+  staminaPerLevel: 0.25
+  baseMana: 50
+  manaPerMagicLevel: 5
+  baseDamage: 1
+  spellBaseCooldown: 5
+  spellCooldownPerIntellect: 0.1
+  minSpellCooldown: 0.25
 --- !u!114 &511079459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10972,9 +10980,10 @@ MonoBehaviour:
   playerStats: {fileID: 511079458}
   fireballPrefab: {fileID: 6230454742839471479, guid: a6f29264292294748bc5ff274a414c0f, type: 3}
   animController: {fileID: 1651854312}
-  fireballCooldownBase: 1.5
+  meleeAttack: {fileID: 511079456}
   fireballManaCost: 10
   fireballSpawnOffset: 0.6
+  meleeBlockWindow: 0.15
 --- !u!114 &511079460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25155,7 +25164,7 @@ MonoBehaviour:
   animator: {fileID: 1651854311}
   visualRoot: {fileID: 1651854310}
   flipOnX: 1
-  weaponVisual: {fileID: 0}
+  weaponVisual: {fileID: 347432019}
 --- !u!1 &1707172460
 GameObject:
   m_ObjectHideFlags: 0

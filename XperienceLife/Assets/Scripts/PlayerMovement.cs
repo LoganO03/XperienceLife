@@ -5,49 +5,63 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D playerRB;
 
-    [SerializeField] private int maxSpeed = 5;
+    [Header("Movement")]
+    [SerializeField] private float walkSpeed = 5f;
+    [SerializeField] private float sprintMultiplier = 1.75f;
 
-    Vector2 moveInput;
-    Vector2 lastMoveInput = Vector2.right;
-
-    InputSystem_Actions controls;
+    [Header("Stamina / Sprint")]
+    [SerializeField] private float staminaDrainPerSecond = 20f;   // drain while sprinting
+    [SerializeField] private float staminaRegenPerSecond = 15f;   // regen when not sprinting
+    [SerializeField] private float minStaminaToSprint = 5f;       // need at least this to sprint
 
     [Header("Aim Indicator")]
-    [SerializeField] Transform aimIndicator;
-    [SerializeField] float aimDistance = 0.7f;
+    [SerializeField] private Transform aimIndicator;
+    [SerializeField] private float aimDistance = 0.7f;
 
-    [SerializeField] private PlayerMeleeAttack meleeAttack;
+    [Header("References")]
+    [SerializeField] private PlayerStats playerStats;
 
+    private InputSystem_Actions controls;
+
+    private Vector2 moveInput;
+    private Vector2 lastMoveInput = Vector2.right;
+
+    private bool sprintHeld = false;
+    private bool isSprinting = false;
 
     public Vector2 AimDirection => lastMoveInput.normalized;
+    public bool IsSprinting => isSprinting;
 
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody2D>();
         controls = new InputSystem_Actions();
 
-        if (meleeAttack == null)
-        meleeAttack = GetComponent<PlayerMeleeAttack>();
+        if (playerStats == null)
+            playerStats = GetComponent<PlayerStats>();
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
-        // Enable the actions and subscribe to the Move action callbacks
         controls.Enable();
+
         controls.Player.Move.performed += OnMove;
-        controls.Player.Move.canceled += OnMove;
-        controls.Player.Attack.performed += OnAttack;
+        controls.Player.Move.canceled  += OnMove;
+
+        controls.Player.Sprint.performed += OnSprintPerformed;
+        controls.Player.Sprint.canceled  += OnSprintCanceled;
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
-        // Unsubscribe and disable to avoid memory leaks
         controls.Player.Move.performed -= OnMove;
-        controls.Player.Move.canceled -= OnMove;
-        controls.Player.Attack.performed -= OnAttack;
+        controls.Player.Move.canceled  -= OnMove;
+
+        controls.Player.Sprint.performed -= OnSprintPerformed;
+        controls.Player.Sprint.canceled  -= OnSprintCanceled;
+
         controls.Disable();
     }
-
 
     private void OnMove(InputAction.CallbackContext ctx)
     {
@@ -59,32 +73,62 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void OnMove(InputValue value)
+    private void OnSprintPerformed(InputAction.CallbackContext ctx)
     {
-        moveInput = value.Get<Vector2>();
-
-        if (moveInput.sqrMagnitude > 0.001f)
-        {
-            lastMoveInput = moveInput;
-        }
+        sprintHeld = true;
     }
 
-    private void OnAttack(InputAction.CallbackContext ctx)
+    private void OnSprintCanceled(InputAction.CallbackContext ctx)
     {
-        if (meleeAttack != null)
-            meleeAttack.PerformAttack();
+        sprintHeld = false;
     }
-
 
     private void FixedUpdate()
     {
-        // KEEPING LINEAR VELOCITY AS YOU REQUESTED
-        playerRB.linearVelocity = moveInput * maxSpeed;
+        HandleMovementAndStamina();
     }
 
     private void Update()
     {
         UpdateAimIndicator();
+    }
+
+    private void HandleMovementAndStamina()
+    {
+        float targetSpeed = walkSpeed;
+        isSprinting = false;
+
+        bool hasMoveInput = moveInput.sqrMagnitude > 0.001f;
+        bool hasStats = playerStats != null;
+
+        bool canSprint =
+            sprintHeld &&
+            hasMoveInput &&
+            hasStats &&
+            playerStats.currentStamina > minStaminaToSprint;
+
+        if (canSprint)
+        {
+            isSprinting = true;
+            targetSpeed = walkSpeed * sprintMultiplier;
+
+            float drain = staminaDrainPerSecond * Time.fixedDeltaTime;
+            playerStats.currentStamina -= drain;
+            if (playerStats.currentStamina < 0f)
+                playerStats.currentStamina = 0f;
+        }
+        else if (hasStats)
+        {
+            if (playerStats.currentStamina < playerStats.maxStamina)
+            {
+                float regen = staminaRegenPerSecond * Time.fixedDeltaTime;
+                playerStats.currentStamina += regen;
+                if (playerStats.currentStamina > playerStats.maxStamina)
+                    playerStats.currentStamina = playerStats.maxStamina;
+            }
+        }
+
+        playerRB.linearVelocity = moveInput * targetSpeed;
     }
 
     private void UpdateAimIndicator()
@@ -94,12 +138,9 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 dir = lastMoveInput.normalized;
 
-        // Position the triangle *around* the player
         aimIndicator.localPosition = dir * aimDistance;
 
-        // Rotate the triangle to face movement direction
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-
         aimIndicator.localRotation = Quaternion.Euler(0f, 0f, angle - 90f);
     }
 }

@@ -15,13 +15,13 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField] private bool flipOnX = true;
 
     [Header("Weapon Visual (optional)")]
-    [SerializeField] private PlayerWeaponVisual weaponVisual;
+    [SerializeField] private SpriteRenderer weaponVisual;
 
-    // Animator parameter hashes
-    private readonly int walkHorizontalBool = Animator.StringToHash("WalkHorizontal");
-    private readonly int walkVerticalBool   = Animator.StringToHash("WalkVertical");
-    private readonly int isAttackingBool    = Animator.StringToHash("IsAttacking");
-    private readonly int isCastingBool      = Animator.StringToHash("IsCasting");
+    // Animator parameter hashes - MATCH Animator window
+    private const string walkHorizontalBool = "WalkHori";
+    private const string walkVerticalBool = "WalkVert";
+    private const string isAttackingBool = "Attack";
+    private const string isCastingBool = "Spell";
 
     private int facing = 1; // 1 = right, -1 = left
 
@@ -30,7 +30,7 @@ public class PlayerAnimationController : MonoBehaviour
         get
         {
             if (animator == null) return false;
-            return animator.GetBool(isCastingBool);
+            return animator.GetBool(isCastingBool); // reads "Spell"
         }
     }
 
@@ -46,7 +46,7 @@ public class PlayerAnimationController : MonoBehaviour
             visualRoot = transform;
 
         if (weaponVisual == null)
-            weaponVisual = GetComponentInChildren<PlayerWeaponVisual>();
+            weaponVisual = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -100,12 +100,12 @@ public class PlayerAnimationController : MonoBehaviour
         if (animator == null) return;
 
         // cancel casting if somehow active
-        animator.SetBool(isCastingBool, false);
+        animator.SetBool(isCastingBool, false); // Spell = false
 
         if (weaponVisual != null)
-            weaponVisual.ShowWeapon();
+            weaponVisual.enabled = true;
 
-        animator.SetBool(isAttackingBool, true);
+        animator.SetBool(isAttackingBool, true); // Attack = true
     }
 
     // Called by PlayerSpells
@@ -114,29 +114,26 @@ public class PlayerAnimationController : MonoBehaviour
         if (animator == null) return;
 
         // cancel attack if somehow active
-        animator.SetBool(isAttackingBool, false);
+        animator.SetBool(isAttackingBool, false); // Attack = false
 
         if (weaponVisual != null)
-            weaponVisual.HideWeapon();
+            weaponVisual.enabled = false;
 
-        animator.SetBool(isCastingBool, true);
+        animator.SetBool(isCastingBool, true); // Spell = true
     }
 
     // Animation Event at end of Attack clip
     public void OnAttackFinished()
     {
-        if (animator == null) return;
-        animator.SetBool(isAttackingBool, false);
+        animator.SetBool(isAttackingBool, false); // Attack = false
     }
 
     // Animation Event at end of Spell clip
     public void OnSpellFinished()
     {
-        if (animator == null) return;
-
-        animator.SetBool(isCastingBool, false);
+        animator.SetBool(isCastingBool, false); // Spell = false
 
         if (weaponVisual != null)
-            weaponVisual.ShowWeapon();
+            weaponVisual.enabled = true;
     }
 }
