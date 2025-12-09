@@ -1,20 +1,27 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerStats : MonoBehaviour
 {
     [Header("Core Stats")]
-    public int health = 5;           // max HP
-    public int stamina = 100;        // max stamina (for sprint)
-    public int magic = 50;           // max mana
-    public int strength = 1;         // melee damage multiplier or base
-    public int intellect = 0;        // reduces spell cooldowns
-    public float regen = 0f;         // HP per second
-    public float manaRegen = 0f;     // mana per second
+    public float health = 5f;            
+    public float stamina = 100f;         
+    public float magic = 50f;            
+    public float strength = 1f;          
+    public float intellect = 0f;         
+    public float regen = 0f;             // HP per second
+    public float manaRegen = 0f;         // mana per second
 
-    // We’ll track current values here
-    [HideInInspector] public int currentHealth;
+    [Header("Regen Delays")]
+    public float healthRegenDelay = 3f;
+    public float manaRegenDelay = 1f;
+
+    [HideInInspector] public float currentHealth;
     [HideInInspector] public float currentStamina;
     [HideInInspector] public float currentMana;
+
+    private Coroutine healthRegenCoroutine;
+    private Coroutine manaRegenCoroutine;
 
     private void Awake()
     {
@@ -23,24 +30,68 @@ public class PlayerStats : MonoBehaviour
         currentMana = magic;
     }
 
-    private void Update()
+    // -------- PUBLIC API -------- //
+
+    public void TakeDamage(float amount)
     {
-        // Regen HP
-        if (regen > 0f && currentHealth < health)
+        currentHealth -= amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0f, health);
+
+        // restart regen delay
+        if (healthRegenCoroutine != null)
+            StopCoroutine(healthRegenCoroutine);
+
+        healthRegenCoroutine = StartCoroutine(HealthRegenRoutine());
+    }
+
+    public bool TrySpendMana(float amount)
+    {
+        if (currentMana < amount)
+            return false;
+
+        currentMana -= amount;
+        currentMana = Mathf.Clamp(currentMana, 0f, magic);
+
+        // restart mana regen delay
+        if (manaRegenCoroutine != null)
+            StopCoroutine(manaRegenCoroutine);
+
+        manaRegenCoroutine = StartCoroutine(ManaRegenRoutine());
+
+        return true;
+    }
+
+    // ---------- COROUTINES ---------- //
+
+    private IEnumerator HealthRegenRoutine()
+    {
+        // wait for delay
+        yield return new WaitForSeconds(healthRegenDelay);
+
+        // regen loop
+        while (currentHealth < health)
         {
-            float newHP = currentHealth + regen * Time.deltaTime;
-            currentHealth = Mathf.Clamp(Mathf.FloorToInt(newHP), 0, health);
+            currentHealth += regen * Time.deltaTime;
+            currentHealth = Mathf.Clamp(currentHealth, 0f, health);
+            yield return null;
         }
 
-        // Regen Mana
-        if (manaRegen > 0f && currentMana < magic)
+        healthRegenCoroutine = null;
+    }
+
+    private IEnumerator ManaRegenRoutine()
+    {
+        // wait for delay
+        yield return new WaitForSeconds(manaRegenDelay);
+
+        // regen loop
+        while (currentMana < magic)
         {
             currentMana += manaRegen * Time.deltaTime;
-            currentMana = Mathf.Clamp(currentMana, 0, magic);
+            currentMana = Mathf.Clamp(currentMana, 0f, magic);
+            yield return null;
         }
 
-        // Stamina regen (we’ll wire up sprint later)
-        // For now, just cap it so it doesn’t go out of range
-        currentStamina = Mathf.Clamp(currentStamina, 0, stamina);
+        manaRegenCoroutine = null;
     }
 }

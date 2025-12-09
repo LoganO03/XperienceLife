@@ -187,10 +187,10 @@ TextureImporter:
       name: Flowers 2_0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 159
-        width: 50
-        height: 66
+        x: 0
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,55 +205,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Flowers 2_1
-      rect:
-        serializedVersion: 2
-        x: 175
-        y: 95
-        width: 50
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a766bfe4e792cb220800000000000000
-      internalID: 2502921115378869882
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flowers 2_2
-      rect:
-        serializedVersion: 2
-        x: 63
-        y: 31
-        width: 50
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f1c99b055db9dc940800000000000000
-      internalID: 5318078075479104543
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 0c0cf4ed2790bdf47a3eb08f3d1b3270
     internalID: 0
     vertices: []
     indices: 
@@ -264,8 +220,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Flowers 2_0: 8057496543226940938
-      Flowers 2_1: 2502921115378869882
-      Flowers 2_2: 5318078075479104543
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

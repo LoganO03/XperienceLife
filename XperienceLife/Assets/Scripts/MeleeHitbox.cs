@@ -3,15 +3,15 @@ using UnityEngine;
 public class MeleeHitbox : MonoBehaviour
 {
     public float lifeTime = 0.1f;
-    public int baseDamage = 1;
-    public int bonusDamage = 0; // we’ll set this from PlayerStats
+    public float baseDamage = 1f;
+    public float bonusDamage = 0f; // we’ll set this from PlayerStats
 
     private void Start()
     {
         Destroy(gameObject, lifeTime);
     }
 
-    private int TotalDamage => baseDamage + bonusDamage;
+    private float TotalDamage => baseDamage + bonusDamage;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

@@ -13,12 +13,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float hitStopDuration = 0.05f;
     [SerializeField] private float hitStopTimeScale = 0.2f;
 
-    [Header("Camera Shake")]
-    [SerializeField] private float shakeDuration = 0.15f;
-    [SerializeField] private float shakeMagnitude = 0.15f;
-
-    public int MaxHealth => stats != null ? stats.health : 5;
-    public int CurrentHealth => stats != null ? stats.currentHealth : 0;
+    public float MaxHealth => stats != null ? stats.health : 5f;
+    public float CurrentHealth => stats != null ? stats.currentHealth : 0f;
 
     private SpriteRenderer sr;
     private Color originalColor;
@@ -37,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
             originalColor = sr.color;
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         if (stats == null) return;
 

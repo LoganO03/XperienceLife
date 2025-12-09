@@ -3,8 +3,8 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [Header("Health")]
-    [SerializeField] private int maxHealth = 3;
-    private int currentHealth;
+    [SerializeField] private float maxHealth = 3f;
+    private float currentHealth;
 
     [Header("Hit Feedback")]
     [SerializeField] private Color hitColor = Color.red;
@@ -27,7 +27,7 @@ public class EnemyHealth : MonoBehaviour
         originalScale = transform.localScale;
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         currentHealth -= amount;
 

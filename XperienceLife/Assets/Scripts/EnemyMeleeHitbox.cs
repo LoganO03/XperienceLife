@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyMeleeHitbox : MonoBehaviour
 {
     public float lifeTime = 0.1f;
-    public int damage = 1;
+    public float damage = 1f;
 
     private void Start()
     {

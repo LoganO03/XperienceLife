@@ -2,33 +2,35 @@ using UnityEngine;
 
 public class FireballProjectile : MonoBehaviour
 {
-    public float speed = 8f;
-    public float lifeTime = 3f;
-    public int damage = 2;
-
+    [Header("Settings")]
+    public float speed = 6f;
+    public float damage;
     private Vector2 direction;
 
-    public void Initialize(Vector2 dir, int bonusDamage)
+    public GameObject explosionPrefab;
+
+    public void Initialize(Vector2 dir, float dmg)
     {
         direction = dir.normalized;
-        damage += bonusDamage; // scale by magic or strength if you want
-    }
+        damage = dmg;
 
-    private void Start()
-    {
-        Destroy(gameObject, lifeTime);
+        // 🔥 Rotate the projectile to face the direction it's moving
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private void Update()
     {
         transform.position += (Vector3)(direction * speed * Time.deltaTime);
     }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Damage enemies
         if (other.CompareTag("Enemy"))
         {
+            if (explosionPrefab != null)
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
             EnemyHealth hp = other.GetComponent<EnemyHealth>();
             if (hp != null)
             {
