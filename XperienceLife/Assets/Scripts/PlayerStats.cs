@@ -31,7 +31,7 @@ public class PlayerStats : MonoBehaviour
     [Header("Config")]
     [SerializeField] private float baseHealth = 10f;               // base HP
     [SerializeField] private float baseStamina = 100f;             // base stamina
-    [SerializeField] private float staminaPerLevel = 0.25f;        // +0.25 per stamina level (floored)
+    [SerializeField] private float staminaPerLevel = 1f;        // +1 per stamina level (floored)
 
     [SerializeField] private float baseMana = 50f;                 // base mana
     [SerializeField] private float manaPerMagicLevel = 5f;         // +5 per magic level

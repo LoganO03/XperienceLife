@@ -17,22 +17,20 @@ public class PlayerAnimationController : MonoBehaviour
     [Header("Weapon Visual (optional)")]
     [SerializeField] private SpriteRenderer weaponVisual;
 
-    // Animator parameter hashes - MATCH Animator window
-    private const string walkHorizontalBool = "WalkHori";
-    private const string walkVerticalBool = "WalkVert";
-    private const string isAttackingBool = "Attack";
-    private const string isCastingBool = "Spell";
+    [Header("Combat References")]
+    [SerializeField] private PlayerMeleeAttack meleeAttack;
+    [SerializeField] private PlayerSpells playerSpells;
 
-    private int facing = 1; // 1 = right, -1 = left
+    // Animator parameter names – must match the Animator
+    private const string WalkHoriParam = "WalkHori";
+    private const string WalkVertParam = "WalkVert";
+    private const string AttackParam   = "Attack";
+    private const string SpellParam    = "Spell";
 
-    public bool IsCasting
-    {
-        get
-        {
-            if (animator == null) return false;
-            return animator.GetBool(isCastingBool); // reads "Spell"
-        }
-    }
+    private int facing = 1;
+
+    public bool IsCasting =>
+        animator != null && animator.GetBool(SpellParam);
 
     private void Awake()
     {
@@ -47,6 +45,13 @@ public class PlayerAnimationController : MonoBehaviour
 
         if (weaponVisual == null)
             weaponVisual = GetComponent<SpriteRenderer>();
+
+        // make sure we can see the combat scripts
+        if (meleeAttack == null)
+            meleeAttack = GetComponentInParent<PlayerMeleeAttack>();
+
+        if (playerSpells == null)
+            playerSpells = GetComponentInParent<PlayerSpells>();
     }
 
     private void Update()
@@ -57,21 +62,11 @@ public class PlayerAnimationController : MonoBehaviour
         Vector2 v = rb.linearVelocity;
         float speed = v.magnitude;
 
-        bool isMoving = speed > idleSpeedThreshold;
+        bool walkH = Mathf.Abs(v.x) > Mathf.Abs(v.y) && speed > idleSpeedThreshold;
+        bool walkV = Mathf.Abs(v.y) >= Mathf.Abs(v.x) && speed > idleSpeedThreshold;
 
-        bool walkH = false;
-        bool walkV = false;
-
-        if (isMoving)
-        {
-            if (Mathf.Abs(v.x) >= Mathf.Abs(v.y))
-                walkH = true;
-            else
-                walkV = true;
-        }
-
-        animator.SetBool(walkHorizontalBool, walkH);
-        animator.SetBool(walkVerticalBool, walkV);
+        animator.SetBool(WalkHoriParam, walkH);
+        animator.SetBool(WalkVertParam, walkV);
 
         HandleFlip(v);
     }
@@ -83,7 +78,7 @@ public class PlayerAnimationController : MonoBehaviour
 
         if (Mathf.Abs(velocity.x) > 0.05f)
         {
-            int newFacing = (velocity.x > 0f) ? 1 : -1;
+            int newFacing = velocity.x > 0f ? 1 : -1;
             if (newFacing != facing)
             {
                 facing = newFacing;
@@ -94,46 +89,85 @@ public class PlayerAnimationController : MonoBehaviour
         }
     }
 
-    // Called by PlayerMeleeAttack
+    // ---------------------------
+    // Called by scripts (input)
+    // ---------------------------
+
+    // PlayerMeleeAttack calls this to start the attack anim
     public void PlayAttack()
     {
         if (animator == null) return;
 
-        // cancel casting if somehow active
-        animator.SetBool(isCastingBool, false); // Spell = false
+        animator.SetBool(SpellParam, false);
+        animator.SetBool(AttackParam, true);
 
         if (weaponVisual != null)
             weaponVisual.enabled = true;
 
-        animator.SetBool(isAttackingBool, true); // Attack = true
+        Debug.Log("PlayAttack: Attack = TRUE");
     }
 
-    // Called by PlayerSpells
+    // PlayerSpells calls this to start the spell anim
     public void PlaySpell()
     {
         if (animator == null) return;
 
-        // cancel attack if somehow active
-        animator.SetBool(isAttackingBool, false); // Attack = false
+        animator.SetBool(AttackParam, false);
+        animator.SetBool(SpellParam, true);
 
         if (weaponVisual != null)
             weaponVisual.enabled = false;
 
-        animator.SetBool(isCastingBool, true); // Spell = true
+        Debug.Log("PlaySpell: Spell = TRUE");
     }
 
-    // Animation Event at end of Attack clip
+    // ---------------------------
+    // Called by animation events
+    // ---------------------------
+
+    // Event from end (or start) of attack anim to clear the bool
     public void OnAttackFinished()
     {
-        animator.SetBool(isAttackingBool, false); // Attack = false
-    }
+        if (animator == null) return;
 
-    // Animation Event at end of Spell clip
-    public void OnSpellFinished()
-    {
-        animator.SetBool(isCastingBool, false); // Spell = false
+        animator.SetBool(AttackParam, false);
+        Debug.Log("OnAttackFinished: Attack = FALSE");
 
         if (weaponVisual != null)
             weaponVisual.enabled = true;
+    }
+
+    // Event from end (or start) of spell anim to clear the bool
+    public void OnSpellFinished()
+    {
+        if (animator == null) return;
+
+        animator.SetBool(SpellParam, false);
+        Debug.Log("OnSpellFinished: Spell = FALSE");
+
+        if (weaponVisual != null)
+            weaponVisual.enabled = true;
+    }
+
+    // 🔹 Event to actually DO the melee hit (we’ll implement body next)
+    public void Animation_MeleeHit()
+    {
+        Debug.Log("Animation_MeleeHit event");
+
+        if (meleeAttack != null)
+        {
+            meleeAttack.Animation_MeleeHit();   // we’ll add this method on the melee script
+        }
+    }
+
+    // 🔹 Event to actually CAST the spell (fireball) 
+    public void Animation_SpellCast()
+    {
+        Debug.Log("Animation_SpellCast event");
+
+        if (playerSpells != null)
+        {
+            playerSpells.Animation_FireballCast(); // we’ll add this method on the spell script
+        }
     }
 }

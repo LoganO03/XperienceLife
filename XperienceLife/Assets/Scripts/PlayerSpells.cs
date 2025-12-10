@@ -7,16 +7,17 @@ public class PlayerSpells : MonoBehaviour
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private GameObject fireballPrefab;
     [SerializeField] private PlayerAnimationController animController;
-    [SerializeField] private PlayerMeleeAttack meleeAttack;  // NEW
 
     [Header("Fireball Settings")]
+    [SerializeField] private float fireballCooldownBase = 1.5f;
     [SerializeField] private float fireballManaCost = 10f;
     [SerializeField] private float fireballSpawnOffset = 0.6f;
 
-    [Header("Cast Block Settings")]
-    [SerializeField] private float meleeBlockWindow = 0.15f; // how long to block melee after casting
-
     private bool canCastFire = true;
+
+    // queued data for the animation event
+    private Vector2 queuedDir = Vector2.right;
+    private bool hasQueuedFireball = false;
 
     private void Awake()
     {
@@ -28,19 +29,16 @@ public class PlayerSpells : MonoBehaviour
 
         if (animController == null)
             animController = GetComponentInChildren<PlayerAnimationController>();
-
-        if (meleeAttack == null)
-            meleeAttack = GetComponent<PlayerMeleeAttack>();
     }
 
+    /// <summary>
+    /// Called from input. Starts the cast animation and queues the shot,
+    /// but does NOT spawn the fireball yet.
+    /// </summary>
     public void CastSpell()
     {
-        Debug.Log("[Spell] CastSpell called");
-        TryCastFireball();
-    }
+        Debug.Log("[Spell] CastSpell (request) called");
 
-    private void TryCastFireball()
-    {
         if (!canCastFire || fireballPrefab == null || playerMovement == null || playerStats == null)
             return;
 
@@ -54,20 +52,52 @@ public class PlayerSpells : MonoBehaviour
         if (dir.sqrMagnitude < 0.001f)
             return;
 
-        // BLOCK MELEE for a brief window so Spell input can't spawn a hitbox
-        if (meleeAttack != null && meleeBlockWindow > 0f)
-        {
-            meleeAttack.BlockAttacksFor(meleeBlockWindow);
-        }
+        queuedDir = dir.normalized;
+        hasQueuedFireball = true;
 
+        // play spell animation
         if (animController != null)
         {
             Debug.Log("[Spell] PlaySpell()");
             animController.PlaySpell();
         }
 
+        // start cooldown at cast start
+        float cd = GetFireballCooldown();
+        StartCoroutine(FireballCooldownRoutine(cd));
+    }
+
+    /// <summary>
+    /// Animation Event – call this from the PSpell clip
+    /// at the frame where the projectile should be emitted.
+    /// </summary>
+    public void Animation_FireballCast()
+    {
+        Debug.Log("[Spell] Animation_FireballCast event fired");
+
+        if (!hasQueuedFireball)
+            return;
+
+        hasQueuedFireball = false;
+
+        if (playerStats == null || fireballPrefab == null || playerMovement == null)
+            return;
+
+        if (playerStats.currentMana < fireballManaCost)
+        {
+            Debug.Log("[Spell] Mana spent or changed before event – cancel cast");
+            return;
+        }
+
+        // spend mana at the moment of cast
         playerStats.currentMana -= fireballManaCost;
-        playerStats.currentMana = Mathf.Clamp(playerStats.currentMana, 0f, playerStats.maxMana);
+
+        Vector2 dir = queuedDir;
+        if (dir.sqrMagnitude < 0.001f)
+            dir = playerMovement.AimDirection.normalized;
+
+        if (dir.sqrMagnitude < 0.001f)
+            return;
 
         Vector3 spawnPos = transform.position + (Vector3)(dir * fireballSpawnOffset);
         GameObject fbObj = Instantiate(fireballPrefab, spawnPos, Quaternion.identity);
@@ -75,20 +105,22 @@ public class PlayerSpells : MonoBehaviour
         var projectile = fbObj.GetComponent<FireballProjectile>();
         if (projectile != null)
         {
-            float damage = Mathf.Max(1f, playerStats.magic / 5f);
-            projectile.Initialize(dir, damage);
-        }
+            float bonusDamage = 0f;
+            if (playerStats != null)
+                bonusDamage += playerStats.magic / 5f;
 
-        float cd = GetFireballCooldown();
-        StartCoroutine(FireballCooldownRoutine(cd));
+            projectile.Initialize(dir, bonusDamage);
+        }
     }
 
     private float GetFireballCooldown()
     {
         if (playerStats == null)
-            return 5f;
+            return fireballCooldownBase;
 
-        return playerStats.GetSpellCooldown();
+        float reduction = 0.03f * playerStats.intellect;
+        reduction = Mathf.Clamp(reduction, 0f, 0.7f);
+        return fireballCooldownBase * (1f - reduction);
     }
 
     private System.Collections.IEnumerator FireballCooldownRoutine(float duration)

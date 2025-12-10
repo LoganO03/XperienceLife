@@ -43,4 +43,39 @@ public class PlayerProfile : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
+
+    public void SaveProfile()
+    {
+        PlayerPrefs.SetFloat("skin_r", appearance.skinColor.r);
+        PlayerPrefs.SetFloat("skin_g", appearance.skinColor.g);
+        PlayerPrefs.SetFloat("skin_b", appearance.skinColor.b);
+
+        PlayerPrefs.SetFloat("eye_r", appearance.eyeColor.r);
+        PlayerPrefs.SetFloat("eye_g", appearance.eyeColor.g);
+        PlayerPrefs.SetFloat("eye_b", appearance.eyeColor.b);
+
+        PlayerPrefs.SetFloat("hair_r", appearance.hairColor.r);
+        PlayerPrefs.SetFloat("hair_g", appearance.hairColor.g);
+        PlayerPrefs.SetFloat("hair_b", appearance.hairColor.b);
+        PlayerPrefs.SetInt("hair_style", appearance.hairStyleIndex);
+
+        PlayerPrefs.SetFloat("shirt_r", appearance.shirtColor.r);
+        PlayerPrefs.SetFloat("shirt_g", appearance.shirtColor.g);
+        PlayerPrefs.SetFloat("shirt_b", appearance.shirtColor.b);
+        PlayerPrefs.SetInt("has_shirt", appearance.hasShirt ? 1 : 0);
+
+        PlayerPrefs.SetFloat("pants_r", appearance.pantsColor.r);
+        PlayerPrefs.SetFloat("pants_g", appearance.pantsColor.g);
+        PlayerPrefs.SetFloat("pants_b", appearance.pantsColor.b);
+        PlayerPrefs.SetInt("has_pants", appearance.hasPants ? 1 : 0);
+
+        PlayerPrefs.SetFloat("shoes_r", appearance.shoesColor.r);
+        PlayerPrefs.SetFloat("shoes_g", appearance.shoesColor.g);
+        PlayerPrefs.SetFloat("shoes_b", appearance.shoesColor.b);
+        PlayerPrefs.SetInt("has_shoes", appearance.hasShoes ? 1 : 0);
+
+        PlayerPrefs.Save();
+
+        Debug.Log("Player Profile Saved!");
+    }
 }

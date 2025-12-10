@@ -57,19 +57,6 @@ public class GameManager : MonoBehaviour
         if (gameTimer != null)
             gameTimer.StopTimer();
 
-        // Hide timer + health UI
-        if (timerUIRoot != null)
-            timerUIRoot.SetActive(false);
-
-        if (healthUIRoot != null)
-            healthUIRoot.SetActive(false);
-
-        if (joystickUIRoot != null)
-            joystickUIRoot.SetActive(false);
-
-        if (attackButtonUIRoot != null)
-            attackButtonUIRoot.SetActive(false);
-
         // Stop spawning new enemies
         if (enemySpawner != null)
         {

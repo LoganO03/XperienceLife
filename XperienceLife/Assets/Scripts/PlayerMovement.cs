@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Stamina / Sprint")]
     [SerializeField] private float staminaDrainPerSecond = 20f;   // drain while sprinting
     [SerializeField] private float staminaRegenPerSecond = 15f;   // regen when not sprinting
-    [SerializeField] private float minStaminaToSprint = 5f;       // need at least this to sprint
+    [SerializeField] private float minStaminaToSprint = 5f;       // need at least this to start sprinting
 
     [Header("Aim Indicator")]
     [SerializeField] private Transform aimIndicator;
@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerStats playerStats;
 
     private InputSystem_Actions controls;
-
     private Vector2 moveInput;
     private Vector2 lastMoveInput = Vector2.right;
 
@@ -68,9 +67,7 @@ public class PlayerMovement : MonoBehaviour
         moveInput = ctx.ReadValue<Vector2>();
 
         if (moveInput.sqrMagnitude > 0.001f)
-        {
             lastMoveInput = moveInput;
-        }
     }
 
     private void OnSprintPerformed(InputAction.CallbackContext ctx)
@@ -96,38 +93,59 @@ public class PlayerMovement : MonoBehaviour
     private void HandleMovementAndStamina()
     {
         float targetSpeed = walkSpeed;
-        isSprinting = false;
-
         bool hasMoveInput = moveInput.sqrMagnitude > 0.001f;
-        bool hasStats = playerStats != null;
 
-        bool canSprint =
-            sprintHeld &&
-            hasMoveInput &&
-            hasStats &&
-            playerStats.currentStamina > minStaminaToSprint;
-
-        if (canSprint)
+        if (playerStats != null)
         {
-            isSprinting = true;
-            targetSpeed = walkSpeed * sprintMultiplier;
+            // -----------------------------
+            // Start / Stop Sprinting Logic
+            // -----------------------------
 
-            float drain = staminaDrainPerSecond * Time.fixedDeltaTime;
-            playerStats.currentStamina -= drain;
-            if (playerStats.currentStamina < 0f)
-                playerStats.currentStamina = 0f;
-        }
-        else if (hasStats)
-        {
-            if (playerStats.currentStamina < playerStats.maxStamina)
+            // Try to START sprinting only if enough stamina
+            if (!isSprinting &&
+                sprintHeld &&
+                hasMoveInput &&
+                playerStats.currentStamina >= minStaminaToSprint)
             {
-                float regen = staminaRegenPerSecond * Time.fixedDeltaTime;
-                playerStats.currentStamina += regen;
-                if (playerStats.currentStamina > playerStats.maxStamina)
-                    playerStats.currentStamina = playerStats.maxStamina;
+                isSprinting = true;
+            }
+
+            // Stop sprinting if sprint released or stamina empty
+            if (!sprintHeld || playerStats.currentStamina <= 0f)
+            {
+                isSprinting = false;
+            }
+
+            // -----------------------------
+            // Sprint Active → Drain stamina
+            // -----------------------------
+            if (isSprinting)
+            {
+                targetSpeed = walkSpeed * sprintMultiplier;
+
+                float drain = staminaDrainPerSecond * Time.fixedDeltaTime;
+                playerStats.currentStamina -= drain;
+
+                if (playerStats.currentStamina <= 0f)
+                    playerStats.currentStamina = 0f;
+            }
+            else
+            {
+                // -----------------------------
+                // Not sprinting → Regen stamina
+                // -----------------------------
+                if (playerStats.currentStamina < playerStats.maxStamina && !sprintHeld)
+                {
+                    float regen = staminaRegenPerSecond * Time.fixedDeltaTime;
+                    playerStats.currentStamina += regen;
+
+                    if (playerStats.currentStamina > playerStats.maxStamina)
+                        playerStats.currentStamina = playerStats.maxStamina;
+                }
             }
         }
 
+        // Apply movement
         playerRB.linearVelocity = moveInput * targetSpeed;
     }
 

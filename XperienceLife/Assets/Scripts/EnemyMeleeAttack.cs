@@ -5,15 +5,17 @@ using UnityEngine;
 public class EnemyMeleeAttack : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private GameObject meleeHitboxPrefab; // prefab with EnemyMeleeHitbox + collider
-    [SerializeField] private Transform player;             // can be left null; auto-found via tag
+    [SerializeField] private GameObject meleeHitboxPrefab;
+    [SerializeField] private Transform player;
 
     [Header("Attack Settings")]
-    [SerializeField] private float attackRange = 0.4f;     // distance between colliders before attacking
-    [SerializeField] private float innerOffset = 0.1f;     // extra offset beyond collider edge
-    [SerializeField] private float hitboxDuration = 0.1f;  // how long the hitbox exists
-    [SerializeField] private float attackCooldown = 1.0f;  // delay between attacks
-    [SerializeField] private float damage = 1f;               // damage dealt to player
+    [SerializeField] private float attackRange = 0.4f;
+    [SerializeField] private float innerOffset = 0.1f;
+    [SerializeField] private float hitboxDuration = 0.1f;
+    [SerializeField] private float attackCooldown = 1.0f;
+    [SerializeField] private float damage = 1f;      // per-enemy base damage in inspector
+
+    private float baseDamage;                        // stored original
 
     private bool canAttack = true;
 
@@ -24,7 +26,10 @@ public class EnemyMeleeAttack : MonoBehaviour
     private void Awake()
     {
         enemyMovement = GetComponent<EnemyMovement>();
-        enemyCollider = GetComponent<Collider2D>();   // zombie collider
+        enemyCollider = GetComponent<Collider2D>();
+
+        // remember original damage for difficulty scaling
+        baseDamage = damage;
 
         if (player == null)
         {
@@ -37,25 +42,30 @@ public class EnemyMeleeAttack : MonoBehaviour
             playerCollider = player.GetComponent<Collider2D>();
     }
 
+    /// <summary>
+    /// Called by spawner after Instantiate to apply wave-based difficulty.
+    /// </summary>
+    public void ApplyDifficultyBonus(int bonus)
+    {
+        damage = baseDamage + bonus;
+    }
+
     private void Update()
     {
         if (player == null) return;
 
         float dist;
 
-        // Prefer accurate collider-vs-collider distance so tall / wide shapes work
         if (enemyCollider != null && playerCollider != null)
         {
             var d = Physics2D.Distance(enemyCollider, playerCollider);
-            dist = d.distance; // shortest distance between the two shapes
+            dist = d.distance;
         }
         else
         {
-            // Fallback to center distance if something is missing
             dist = Vector2.Distance(transform.position, player.position);
         }
 
-        // Only attack if within range and off cooldown
         if (dist <= attackRange && canAttack)
         {
             PerformAttack();
@@ -67,16 +77,13 @@ public class EnemyMeleeAttack : MonoBehaviour
         if (!canAttack || meleeHitboxPrefab == null || player == null)
             return;
 
-        // Start the attack animation immediately
         if (enemyMovement != null)
         {
             enemyMovement.StartAttackAnimation();
         }
 
-        // Direction from enemy to player
         Vector2 dir = (player.position - transform.position).normalized;
 
-        // Spawn hitbox at the edge of the enemy collider, in the direction of the player
         Vector3 center = transform.position;
         float radius = 0f;
 
@@ -90,11 +97,9 @@ public class EnemyMeleeAttack : MonoBehaviour
         Vector3 spawnPos = center + (Vector3)(dir * (radius + innerOffset));
         GameObject hitboxObj = Instantiate(meleeHitboxPrefab, spawnPos, Quaternion.identity);
 
-        // Rotate triangle so its tip points toward the player
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         hitboxObj.transform.rotation = Quaternion.Euler(0f, 0f, angle + 90f);
 
-        // Configure the hitbox
         var hb = hitboxObj.GetComponent<EnemyMeleeHitbox>();
         if (hb != null)
         {
@@ -102,7 +107,6 @@ public class EnemyMeleeAttack : MonoBehaviour
             hb.damage = damage;
         }
 
-        // Start cooldown so it doesn't spam attacks every frame
         StartCoroutine(CooldownRoutine());
     }
 

@@ -3,8 +3,11 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [Header("Health")]
-    [SerializeField] private float maxHealth = 3f;
+    [SerializeField] private float maxHealth = 3f;   // per-enemy base HP in inspector
     private float currentHealth;
+
+    // store original so we can add difficulty on top
+    private float baseMaxHealth;
 
     [Header("Hit Feedback")]
     [SerializeField] private Color hitColor = Color.red;
@@ -18,6 +21,9 @@ public class EnemyHealth : MonoBehaviour
 
     private void Awake()
     {
+        // remember original HP for difficulty scaling
+        baseMaxHealth = maxHealth;
+
         currentHealth = maxHealth;
 
         sr = GetComponent<SpriteRenderer>();
@@ -25,6 +31,17 @@ public class EnemyHealth : MonoBehaviour
             originalColor = sr.color;
 
         originalScale = transform.localScale;
+    }
+
+    /// <summary>
+    /// Called by spawner after Instantiate to apply wave-based difficulty.
+    /// e.g., bonus = wave-1 so wave 1: +0, wave 2: +1, etc.
+    /// </summary>
+    public void ApplyDifficultyBonus(int bonus)
+    {
+        // keep baseMaxHealth as the per-enemy inspector value
+        maxHealth = baseMaxHealth + bonus;
+        currentHealth = maxHealth;
     }
 
     public void TakeDamage(float amount)
@@ -44,7 +61,6 @@ public class EnemyHealth : MonoBehaviour
     {
         isFlashing = true;
 
-        // flash color + scale punch
         if (sr != null)
             sr.color = hitColor;
 
@@ -66,5 +82,4 @@ public class EnemyHealth : MonoBehaviour
 
         Destroy(gameObject);
     }
-
 }

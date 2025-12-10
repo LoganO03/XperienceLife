@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints;
 
     [Header("Wave Settings")]
-    [SerializeField] private float timeBetweenWaves = 5f;
+    [SerializeField] private float timeBetweenWaves = 10f;
     [SerializeField] private int startEnemiesPerWave = 3;
     [SerializeField] private int enemiesPerWaveIncrease = 1;
 
@@ -24,15 +24,19 @@ public class EnemySpawner : MonoBehaviour
         while (isSpawning)
         {
             currentWave++;
+
+            // difficultyBonus: +0 on wave 1, +1 on wave 2, etc.
+            int difficultyBonus = Mathf.Max(0, currentWave - 1);
+
             int enemiesThisWave = startEnemiesPerWave + enemiesPerWaveIncrease * (currentWave - 1);
 
-            Debug.Log("Spawning wave " + currentWave + " with " + enemiesThisWave + " enemies.");
+            Debug.Log($"Spawning wave {currentWave} (bonus {difficultyBonus}) with {enemiesThisWave} enemies.");
 
             for (int i = 0; i < enemiesThisWave; i++)
             {
                 if (!isSpawning) yield break;
 
-                SpawnEnemy();
+                SpawnEnemy(difficultyBonus);
                 yield return new WaitForSeconds(0.2f);
             }
 
@@ -45,16 +49,28 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void SpawnEnemy()
+    private void SpawnEnemy(int difficultyBonus)
     {
         if (enemyPrefabs == null || enemyPrefabs.Length == 0 || spawnPoints.Length == 0) return;
 
         Transform sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
         GameObject prefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
 
-        Instantiate(prefab, sp.position, Quaternion.identity);
-    }
+        GameObject enemyObj = Instantiate(prefab, sp.position, Quaternion.identity);
 
+        // Apply difficulty scaling to this enemy instance
+        var health = enemyObj.GetComponent<EnemyHealth>();
+        if (health != null)
+        {
+            health.ApplyDifficultyBonus(difficultyBonus);
+        }
+
+        var melee = enemyObj.GetComponent<EnemyMeleeAttack>();
+        if (melee != null)
+        {
+            melee.ApplyDifficultyBonus(difficultyBonus);
+        }
+    }
 
     public void StopSpawning()
     {

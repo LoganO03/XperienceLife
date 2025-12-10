@@ -25,13 +25,13 @@ public class PlayerInputBridge : MonoBehaviour
         controls.Enable();
 
         controls.Player.Attack.performed += OnAttackPerformed;
-        controls.Player.Spell.performed += OnSpellPerformed;
+        controls.Player.Spell.performed  += OnSpellPerformed;
     }
 
     private void OnDisable()
     {
         controls.Player.Attack.performed -= OnAttackPerformed;
-        controls.Player.Spell.performed -= OnSpellPerformed;
+        controls.Player.Spell.performed  -= OnSpellPerformed;
 
         controls.Disable();
     }
@@ -40,13 +40,13 @@ public class PlayerInputBridge : MonoBehaviour
     {
         Debug.Log("[InputBridge] Attack performed");
         if (melee != null)
-            melee.PerformAttack();
+            melee.PerformAttack();        // just starts animation + queue
     }
 
     private void OnSpellPerformed(InputAction.CallbackContext ctx)
     {
         Debug.Log("[InputBridge] Spell performed");
         if (spells != null)
-            spells.CastSpell();
+            spells.CastSpell();           // just starts animation + queue
     }
 }

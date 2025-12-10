@@ -94,6 +94,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "movew",
+                    "type": "Value",
+                    "id": "23c76414-d028-4fb3-804d-d516b744f974",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -253,6 +262,17 @@
                 },
                 {
                     "name": "",
+                    "id": "c93bc803-4bbb-4d11-b4de-f08026933e00",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "eb40bb66-4559-4dfa-9a2f-820438abb426",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -347,6 +367,17 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Spell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f4d90d75-c8aa-4eaf-8ab9-770c2b18e125",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "movew",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

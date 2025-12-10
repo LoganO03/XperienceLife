@@ -16,8 +16,9 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     private bool canAttack = true;
 
-    // NEW: block window used when casting spells
-    private bool blockFromSpell = false;
+    // direction we’ll use when the animation reaches the hit frame
+    private Vector2 queuedAttackDir = Vector2.right;
+    private bool hasQueuedAttack = false;
 
     private void Awake()
     {
@@ -32,35 +33,17 @@ public class PlayerMeleeAttack : MonoBehaviour
     }
 
     /// <summary>
-    /// Called by PlayerSpells to temporarily block melee when a spell is cast.
+    /// Called from input. Starts the attack animation and queues data,
+    /// but does NOT spawn the hitbox yet.
     /// </summary>
-    public void BlockAttacksFor(float duration)
-    {
-        StartCoroutine(BlockAttacksRoutine(duration));
-    }
-
-    private IEnumerator BlockAttacksRoutine(float duration)
-    {
-        blockFromSpell = true;
-        yield return new WaitForSeconds(duration);
-        blockFromSpell = false;
-    }
-
     public void PerformAttack()
     {
-        Debug.Log("[Melee] PerformAttack called");
+        Debug.Log("[Melee] PerformAttack (request) called");
 
-        // Block attacking while casting spells (animation-based)
+        // hard guard: don't attack while casting
         if (animController != null && animController.IsCasting)
         {
-            Debug.Log("[Melee] Blocked attack because player is casting (anim)");
-            return;
-        }
-
-        // EXTRA safety: block if we just cast a spell this frame
-        if (blockFromSpell)
-        {
-            Debug.Log("[Melee] Blocked attack because of spell block window");
+            Debug.Log("[Melee] Blocked attack because player is casting");
             return;
         }
 
@@ -71,14 +54,47 @@ public class PlayerMeleeAttack : MonoBehaviour
         if (dir.sqrMagnitude < 0.001f)
             return;
 
+        queuedAttackDir = dir.normalized;
+        hasQueuedAttack = true;
+
+        // play attack animation
         if (animController != null)
         {
             Debug.Log("[Melee] PlayAttack()");
             animController.PlayAttack();
         }
 
-        Vector3 spawnPos = playerMovement.transform.position + (Vector3)(dir * innerOffset);
+        // start cooldown as soon as attack starts
+        StartCoroutine(Cooldown());
+    }
 
+    /// <summary>
+    /// Animation Event – call this from the PAttack clip
+    /// at the frame where the weapon should hit.
+    /// </summary>
+    public void Animation_MeleeHit()
+    {
+        Debug.Log("[Melee] Animation_MeleeHit event fired");
+
+        if (!hasQueuedAttack)
+        {
+            // no queued data – nothing to do
+            return;
+        }
+        hasQueuedAttack = false;
+
+        if (meleeHitboxPrefab == null || playerMovement == null)
+            return;
+
+        Vector2 dir = queuedAttackDir;
+        if (dir.sqrMagnitude < 0.001f)
+            dir = playerMovement.AimDirection.normalized;
+
+        if (dir.sqrMagnitude < 0.001f)
+            return;
+
+        // Put the tip slightly in front of the player
+        Vector3 spawnPos = playerMovement.transform.position + (Vector3)(dir * innerOffset);
         GameObject hitboxObj = Instantiate(meleeHitboxPrefab, spawnPos, Quaternion.identity);
 
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
@@ -88,10 +104,10 @@ public class PlayerMeleeAttack : MonoBehaviour
         if (hb != null)
         {
             hb.lifeTime = hitboxDuration;
-            hb.damage = playerStats != null ? playerStats.GetMeleeDamage() : 1f;
-        }
 
-        StartCoroutine(Cooldown());
+            if (playerStats != null)
+                hb.damage = playerStats.strength;
+        }
     }
 
     private IEnumerator Cooldown()
