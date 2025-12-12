@@ -5214,6 +5214,7 @@ GameObject:
   - component: {fileID: 1463094435}
   - component: {fileID: 1463094434}
   - component: {fileID: 1463094433}
+  - component: {fileID: 1463094436}
   m_Layer: 5
   m_Name: Confirm
   m_TagString: Untagged
@@ -5297,6 +5298,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1463094436}
+        m_TargetAssemblyTypeName: NativeBridgeButton, Assembly-CSharp
+        m_MethodName: ReturnToApp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1463094434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5335,48 +5348,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463094431}
   m_CullTransparentMesh: 1
---- !u!1 &1466145916
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1466145917}
-  - component: {fileID: 1466145918}
-  m_Layer: 0
-  m_Name: ProfileBridge
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1466145917
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1466145916}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 250.53261, y: 1217.5276, z: -0.79023194}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1466145918
+--- !u!114 &1463094436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1466145916}
+  m_GameObject: {fileID: 1463094431}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aab181ff66cb8b84795d6aedd0f5b92d, type: 3}
+  m_Script: {fileID: 11500000, guid: c198683f4e839944fbbae7a4917c6a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1472013153
@@ -7674,7 +7655,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 406248931}
   - {fileID: 1608170500}
-  - {fileID: 1466145917}
   - {fileID: 412614868}
   - {fileID: 1751248911}
   - {fileID: 803579745}
